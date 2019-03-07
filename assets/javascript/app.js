@@ -16,7 +16,7 @@
 
 $(document).ready(function () {
 
-    var topics = ["video games", "dogs", "cats", "reading", "rally cars"];
+    var topics = ["video games", "dogs", "cats", "reading", "rally racing"];
 
     function createButtons() {
         $("#buttons-div").empty();
@@ -42,15 +42,27 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             var results = response.data;
-            console.log(results)
+            $("#gifs-div").empty();
+
             for (var i = 0; i < results.length; i++) {
                 var url_still = results[i].images.fixed_height_still.url;
                 var url_animated = results[i].images.fixed_height.url;
                 var rating = results[i].rating;
 
-                console.log(url_still);
-                console.log(url_animated);
-                console.log(rating);
+                var gifDiv = $("<div>");
+                gifDiv.css("float", "left");
+                gifDiv.addClass("gif-box")
+
+                var ratingP = $("<p>").text("Rating: " + rating);
+
+                var gif = $("<img>").addClass("topic-gif");
+                gif.attr("data-still", url_still);
+                gif.attr("data-animated", url_animated);
+                gif.attr("data-state", "still");
+                gif.attr("src", url_still);
+
+                gifDiv.append(ratingP, gif);
+                $("#gifs-div").append(gifDiv);
             }
         });
 
