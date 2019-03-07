@@ -13,10 +13,15 @@
 
 .gif-box {
     margin: 20px;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
 }
 
 p {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 #buttons-div {
