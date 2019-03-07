@@ -78,6 +78,15 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on("click", "#submit", function () {
+
+        topics.push($("#user-input").val().trim());
+
+        $("#user-input").val("");
+
+        createButtons();
+    });
+
     createButtons();
 
 });
