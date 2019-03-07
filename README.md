@@ -55,3 +55,4 @@ Adding a button |
 * CSS
 * JQuery
 * Bootstrap
+* GIPHY API
