@@ -31,6 +31,26 @@ $(document).ready(function () {
         }
     }
 
+    $(document).on("click", ".gif-button", function () {
+
+        var topic = $(this).attr("data-topic");
+
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&limit=10&rating=pg&api_key=el1LWbh5MYri61KekZrPPTDZzDlVqfGw";
+        console.log(queryURL);
+        console.log(topic);
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var results = response.data;
+
+            console.log(results[0].rating);
+        });
+
+
+    });
+
     createButtons();
 
 });
