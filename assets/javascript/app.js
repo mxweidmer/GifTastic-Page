@@ -65,8 +65,17 @@ $(document).ready(function () {
                 $("#gifs-div").append(gifDiv);
             }
         });
+    });
 
+    $(document).on("click", ".topic-gif", function () {
 
+        if ($(this).attr("data-state") === "still") {
+            $(this).attr("src", $(this).attr("data-animated"));
+            $(this).attr("data-state", "animated");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
     });
 
     createButtons();
