@@ -2,6 +2,8 @@
 .jumbotron {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .gif-button {
@@ -15,4 +17,9 @@
 
 p {
     font-weight: bold;
+}
+
+#buttons-div {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
