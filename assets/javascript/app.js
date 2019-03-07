@@ -16,7 +16,7 @@
 
 $(document).ready(function () {
 
-    var topics = ["fallout new vegas", "dogs", "cats", "photography", "pokemon"];
+    var topics = ["video games", "dogs", "cats", "reading", "rally cars"];
 
     function createButtons() {
         $("#buttons-div").empty();
@@ -36,16 +36,22 @@ $(document).ready(function () {
         var topic = $(this).attr("data-topic");
 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&limit=10&rating=pg&api_key=el1LWbh5MYri61KekZrPPTDZzDlVqfGw";
-        console.log(queryURL);
-        console.log(topic);
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             var results = response.data;
+            console.log(results)
+            for (var i = 0; i < results.length; i++) {
+                var url_still = results[i].images.fixed_height_still.url;
+                var url_animated = results[i].images.fixed_height.url;
+                var rating = results[i].rating;
 
-            console.log(results[0].rating);
+                console.log(url_still);
+                console.log(url_animated);
+                console.log(rating);
+            }
         });
 
 
