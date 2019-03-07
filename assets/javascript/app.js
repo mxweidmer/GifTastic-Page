@@ -40,6 +40,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             var results = response.data;
+            console.log(results[0]);
             $("#gifs-div").empty();
 
             for (var i = 0; i < results.length; i++) {
@@ -47,6 +48,7 @@ $(document).ready(function () {
                 var url_still = results[i].images.fixed_height_still.url;
                 var url_animated = results[i].images.fixed_height.url;
                 var rating = results[i].rating;
+                var title = results[i].title;
 
                 // new gifDiv created for every image to hold image and p tag together
                 // floated left for better layout on page (aligned side by side when possible)
@@ -54,6 +56,7 @@ $(document).ready(function () {
                 gifDiv.css("float", "left");
                 gifDiv.addClass("gif-box")
 
+                var titleP = $("<p>").text("Title: " + title);
                 var ratingP = $("<p>").text("Rating: " + rating);
 
                 // using data-attributes to hold both still and animated url links, as well as state
@@ -63,7 +66,7 @@ $(document).ready(function () {
                 gif.attr("data-state", "still");
                 gif.attr("src", url_still);
 
-                gifDiv.append(ratingP, gif);
+                gifDiv.append(titleP, ratingP, gif);
                 $("#gifs-div").append(gifDiv);
             }
         });
